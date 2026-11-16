@@ -1,0 +1,720 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Quem Defende o Jornalista</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: jornal de sindicato / cartaz de greve. Coluna de leitura estreita, faixas largas para mapa, vídeos e quiz. */
+:root{
+  --paper:#F1F4F9; --paper2:#E3E9F3; --ink:#0F1B33; --ink2:#44506A; --line:#C7D0E0;
+  --red:#C8171F; --red-ink:#fff; --blue:#A9C3FF; --blue-ink:#0F1B33;
+  --l0:#E1E5DF; --l1:#CFDECB; --l2:#B5CEAD; --l3:#9DBB8E; --l4:#789F65; --l5:#4F7332;
+  --t0:#0F1B33; --t1:#0F1B33; --t2:#0F1B33; --t3:#0F1B33; --t4:#fff; --t5:#fff;
+  --ok:#1F7A45; --bad:#B3261E; color-scheme:light;
+  --display:'Anton','Impact','Arial Narrow',sans-serif;
+  --body:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --ui:'Archivo','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1;letter-spacing:.01em;text-wrap:balance;margin:0}
+p{margin:0 0 1.1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto}
+.read{max-width:680px}
+.eyebrow{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.kicker{font-family:var(--ui);color:var(--ink2);font-size:14px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--ink);color:var(--paper);
+  margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:48px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}
+.nav .wrap::-webkit-scrollbar{display:none}
+.nav b{font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--paper)}
+.nav a{font-family:var(--ui);font-size:13px;font-weight:600;text-decoration:none;color:var(--paper);opacity:.75;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover,.nav a.on{opacity:1;border-color:var(--red)}
+.prog{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;z-index:51;background:transparent}
+.prog i{display:block;height:100%;width:0;background:var(--red)}
+
+/* hero */
+.hero{background:var(--blue);color:var(--blue-ink);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:56px max(16px,env(safe-area-inset-left,0px)) 0;border-bottom:6px solid var(--ink)}
+.hero .wrap{padding-bottom:8px}
+.hero h1{font-size:clamp(40px,10.5vw,150px);line-height:.92;overflow-wrap:anywhere}
+.hero h1 em{font-style:normal;color:var(--red);display:block}
+.hero p.lede{font-size:21px;max-width:34ch;margin:22px 0 40px}
+.fist{width:100%;max-width:300px;justify-self:end;display:block;margin-bottom:-4px}
+.fist path{fill:var(--red)}
+.stats{background:var(--ink);color:var(--paper);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:22px 18px 22px 0;border-right:1px solid color-mix(in srgb,var(--paper) 22%,transparent);padding-left:18px}
+.stat:first-child{padding-left:0}.stat:last-child{border:0}
+.stat b{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,52px);line-height:1;display:block;font-variant-numeric:tabular-nums}
+.stat span{font-family:var(--ui);font-size:13px;opacity:.8;display:block;margin-top:6px;line-height:1.35}
+
+section{padding-block:76px 12px;scroll-margin-top:60px}
+section h2{font-size:clamp(38px,6vw,72px);margin-bottom:26px}
+.dropcap::first-letter{font-family:var(--display);float:left;font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--red)}
+blockquote{margin:34px 0;padding:0 0 0 22px;border-left:6px solid var(--red);font-size:26px;line-height:1.3;font-style:italic;max-width:640px}
+blockquote cite{display:block;font-family:var(--ui);font-style:normal;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:12px;color:var(--ink2)}
+.band{margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:56px max(16px,env(safe-area-inset-left,0px));background:var(--paper2);margin-block:56px 0}
+.band h3{font-size:clamp(28px,4vw,44px);margin-bottom:12px}
+
+/* people tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 22px}
+.tab{font-family:var(--ui);font-weight:600;font-size:14px;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;margin-top:20px}
+.person{display:grid;align-content:start;grid-template-columns:1fr;gap:6px;border:2px solid var(--ink);padding:26px;background:var(--paper)}
+.person h4{font-family:var(--display);font-weight:400;font-size:34px;text-transform:uppercase;margin:0;line-height:1.05}
+.person .role{font-family:var(--ui);font-size:14px;color:var(--ink2);margin-bottom:10px}
+.person q{display:block;font-size:24px;line-height:1.35;font-style:italic;margin:6px 0 14px;quotes:"“" "”"}
+.person p{max-width:62ch;margin:0 0 .8em}
+
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:28px}
+.vid{display:flex;flex-direction:column;gap:12px;min-width:0}
+.phone{background:#000;border:3px solid var(--ink);aspect-ratio:9/16;width:100%;max-width:300px;overflow:hidden}
+.phone video{width:100%;height:100%;display:block;object-fit:cover;background:#000}
+.vid h4{font-family:var(--display);font-weight:400;font-size:24px;text-transform:uppercase;margin:0}
+.vid p{font-family:var(--ui);font-size:14px;color:var(--ink2);margin:0}
+
+.vtlink{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--ink);color:var(--paper);text-decoration:none}
+.vtlink .play{width:0;height:0;border-left:34px solid var(--red);border-top:22px solid transparent;border-bottom:22px solid transparent}
+.vtlink .vtl{font-family:var(--display);font-size:44px;letter-spacing:.06em}
+.audio{border:2px solid var(--ink);background:var(--blue);color:var(--blue-ink);padding:20px 22px;margin:0 0 30px;display:grid;gap:12px;max-width:760px}
+.audio-h{display:grid;gap:4px}
+.audio-h b{font-family:var(--display);font-weight:400;font-size:30px;text-transform:uppercase;line-height:1.05}
+.audio .eyebrow{color:var(--blue-ink)}
+.audio audio{width:100%;display:block}
+.dv{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--ink) center/cover no-repeat;color:#fff;text-decoration:none;position:relative;width:100%;height:100%;padding-bottom:0}
+.phone .dv{justify-content:flex-end;padding-bottom:22px}
+.dvp{width:68px;height:68px;border-radius:50%;background:#fff;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.35);transition:transform .15s}
+.dvp::after{content:"";position:absolute;left:27px;top:20px;border-left:22px solid var(--red);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.dv:hover .dvp{transform:scale(1.08)}
+.dvl{font-family:var(--ui);font-weight:700;font-size:14px;background:var(--ink);color:#fff;padding:7px 14px}
+.dv-audio{flex-direction:row;justify-content:flex-start;height:auto;background:var(--paper);color:var(--ink);border:2px solid var(--ink);padding:12px 16px}
+.dv-audio .dvp{width:48px;height:48px;background:var(--red);box-shadow:none}
+.dv-audio .dvp::after{left:19px;top:13px;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent}
+.dv-audio .dvl{background:transparent;color:var(--ink);padding:0;font-size:16px}
+.phone iframe{width:100%;height:100%;border:0;display:block}
+.audio iframe{width:100%;height:160px;border:0;display:block}
+/* chart bars */
+.bars{display:grid;gap:12px;margin:26px 0}
+.bar{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;font-family:var(--ui);font-size:14px}
+.bar .track{position:relative;height:34px;background:var(--paper);border:1px solid var(--line)}
+.bar .fill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:max-content;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.bar .fill.piso{background:var(--l4);color:var(--t4)}
+.bar .fill.ref{background:repeating-linear-gradient(45deg,var(--red),var(--red) 6px,color-mix(in srgb,var(--red) 80%,var(--paper)) 6px,color-mix(in srgb,var(--red) 80%,var(--paper)) 12px);color:var(--red-ink)}
+.bar .fill.avg{background:var(--ink);color:var(--paper)}
+.bar small{display:block;color:var(--ink2);font-size:12px}
+.legend-note{font-family:var(--ui);font-size:13px;color:var(--ink2)}
+
+/* map */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);grid-template-areas:"map info" "ctl .";gap:20px 36px;align-items:start;margin-top:10px}
+.mapwrap{grid-area:map;min-width:0}
+.mapgrid .info{grid-area:info}
+.mapctl{grid-area:ctl}
+.zoombtn{display:none;margin-bottom:12px}
+.imap{position:relative;margin:0;border:2px solid var(--ink);background:#fff;line-height:0}
+.imap img{width:100%;display:block}
+.ov{position:absolute;left:0;top:0;width:100%;height:100%}
+.ov path{fill:transparent;stroke:transparent;stroke-width:6;stroke-linejoin:round;cursor:pointer;outline:none;transition:fill .15s}
+.ov path:hover{fill:rgba(200,23,31,.24)}
+.ov path.hl{fill:rgba(200,23,31,.22)}
+.ov path:focus-visible{stroke:var(--red);stroke-width:4}
+.ov path[aria-pressed="true"]{fill:rgba(200,23,31,.34);stroke:var(--red);stroke-width:4}
+.hot{position:absolute;aspect-ratio:1;min-width:26px;transform:translate(-50%,-50%);border-radius:50%;border:2px solid transparent;background:transparent;cursor:pointer;padding:0;transition:background .15s,border-color .15s}
+.hot:hover{border-color:var(--red);background:rgba(200,23,31,.14)}
+.hot.hl{border-color:var(--red);background:rgba(200,23,31,.2)}
+.hot[aria-pressed="true"]{border:3px solid var(--red);background:rgba(200,23,31,.28)}
+.tip{position:absolute;transform:translate(-50%,-135%);background:#0F1B33;color:#fff;font-family:var(--ui);font-weight:700;font-size:14px;line-height:1.2;padding:7px 11px;white-space:nowrap;pointer-events:none;z-index:3}
+.sigs{display:flex;flex-wrap:wrap;gap:6px}
+.sg{font-family:var(--display);font-size:16px;letter-spacing:.03em;min-width:44px;height:40px;border:2px solid transparent;color:#0F1B33;cursor:pointer;padding:0 8px}
+.sg[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink)}
+.sg.dim{opacity:.25}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.chip{font-family:var(--ui);font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center;border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:6px 11px;cursor:pointer}
+.chip i{width:14px;height:14px;display:block;border:1px solid var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.info{border:2px solid var(--ink);padding:24px;background:var(--paper);position:sticky;top:76px}
+.info .sig{font-family:var(--display);font-size:84px;line-height:.9;color:var(--red)}
+.info h3{font-size:30px;margin:4px 0 14px}
+.info .val{font-family:var(--display);font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.info .rng{font-family:var(--ui);font-size:14px;color:var(--ink2);margin-top:8px}
+.info .tag{display:inline-block;font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:3px 8px;margin-bottom:12px}
+.src{font-family:var(--ui);font-size:12px;color:var(--ink2);margin-top:14px}
+.btn{font-family:var(--ui);font-weight:700;font-size:14px;border:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:11px 18px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink)}
+details.orig{margin-top:26px;font-family:var(--ui)}
+details.orig summary{cursor:pointer;font-weight:700;font-size:14px}
+details.orig img{margin-top:14px;border:2px solid var(--ink);max-width:640px;width:100%;display:block}
+
+/* diploma */
+.timeline{list-style:none;margin:30px 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:26px 0;border-top:4px solid var(--ink)}
+.timeline li{padding:20px 18px 6px 0;position:relative}
+.timeline li::before{content:"";position:absolute;top:-12px;left:0;width:20px;height:20px;background:var(--red);border:4px solid var(--paper)}
+.timeline b{font-family:var(--display);font-weight:400;font-size:44px;display:block;line-height:1;margin-bottom:6px}
+.timeline span{font-family:var(--ui);font-size:14px;color:var(--ink2);display:block;line-height:1.45}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);margin-top:24px}
+.vs>div{padding:26px;min-width:0}
+.vs>div+div{border-left:2px solid var(--ink)}
+.vs h3{font-size:30px;margin-bottom:14px}
+.vs .who{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;display:block}
+.vs .pro{background:var(--ink);color:var(--paper)}
+.vs .pro .who{color:var(--blue)}
+.vs p{font-size:17px;line-height:1.55}
+.ufsc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:20px}
+.ufsc div{border-top:4px solid var(--red);padding-top:10px}
+.ufsc.sm b{font-size:clamp(24px,6.4vw,36px);line-height:1.05}
+.ufsc b{font-family:var(--display);font-weight:400;font-size:52px;line-height:1;display:block;font-variant-numeric:tabular-nums}
+.ufsc span{font-family:var(--ui);font-size:13px;color:var(--ink2);line-height:1.35;display:block;margin-top:4px}
+.callout{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:2px solid var(--ink);padding:20px 24px;margin-top:30px;background:var(--blue);color:var(--blue-ink)}
+.callout b{font-family:var(--display);font-weight:400;font-size:28px;text-transform:uppercase;display:block;line-height:1.05}
+.callout span{font-family:var(--ui);font-size:14px}
+.callout .btn{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* coletivo */
+.col3{display:flex;gap:10px;align-items:flex-end;height:180px;margin:20px 0 8px}
+.col3 div{flex:1;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:10px;font-family:var(--display);font-size:34px;line-height:1}
+.col3 div span{font-family:var(--ui);font-size:12px;margin-top:6px;opacity:.85}
+.col3 div:nth-child(2){background:var(--l4);color:var(--t4)}.col3 div:nth-child(3){background:var(--red);color:var(--red-ink)}
+
+/* quiz */
+.quiz{border:3px solid var(--ink);background:var(--paper);padding:0;margin-top:20px;max-width:760px}
+.qhead{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--paper);padding:12px 22px;font-family:var(--ui);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.qbody{padding:26px 22px}
+.qbody h3{font-family:var(--body);text-transform:none;font-size:25px;line-height:1.3;font-weight:600;margin-bottom:20px;letter-spacing:0}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;font-family:var(--ui);font-size:16px;line-height:1.4;padding:14px 16px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;gap:14px}
+.opt b{font-family:var(--display);font-weight:400;font-size:20px;min-width:22px}
+.opt:hover:not(:disabled){background:var(--paper2)}
+.opt.right{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default}
+.fb{font-family:var(--ui);font-size:15px;margin-top:18px;padding:14px 16px;background:var(--paper2);border-left:6px solid var(--red)}
+.qfoot{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center}
+.dots{display:flex;gap:6px}.dots i{width:30px;height:8px;background:var(--line)}.dots i.cur{background:var(--ink)}.dots i.ok{background:var(--ok)}.dots i.no{background:var(--bad)}
+.score{font-family:var(--display);font-size:84px;line-height:1;color:var(--red)}
+
+.poll{margin-top:56px;border:3px solid var(--ink);padding:26px 22px;max-width:760px;background:var(--blue);color:var(--blue-ink)}
+.poll h3{font-family:var(--body);text-transform:none;font-size:26px;line-height:1.3;font-weight:600;letter-spacing:0;margin-bottom:10px}
+.poll .kicker{color:var(--blue-ink);opacity:.85;margin:0 0 20px}
+.poll .opt[aria-checked="true"]{background:var(--ink);color:var(--paper)}
+.poll .eyebrow{color:var(--blue-ink)}
+footer{margin-top:90px;background:var(--ink);color:var(--paper);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:48px max(16px,env(safe-area-inset-left,0px)) calc(48px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+footer h3{font-size:30px;margin-bottom:14px;color:var(--blue)}
+footer ul{list-style:none;padding:0;margin:0;font-family:var(--ui);font-size:14px;line-height:1.7;opacity:.9}
+footer .big{font-family:var(--display);font-size:clamp(34px,5vw,56px);line-height:1;text-transform:uppercase}
+
+@media (max-width:860px){
+  .mapgrid{grid-template-columns:1fr;grid-template-areas:"map" "info" "ctl"}
+  .zoombtn{display:inline-block}
+  .mapwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .mapwrap.zoom .imap{width:900px;max-width:none}
+  .stat b{font-size:clamp(26px,7vw,40px)}
+  .hero .wrap{grid-template-columns:1fr}.fist{max-width:170px;justify-self:start;order:-1}
+  .stats .wrap{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(3){padding-left:0}.stat:nth-child(-n+2){border-bottom:1px solid color-mix(in srgb,var(--paper) 22%,transparent)}
+  .mapgrid{grid-template-columns:1fr}.info{position:static}
+  .timeline{grid-template-columns:1fr 1fr;row-gap:22px}
+  .vs{grid-template-columns:1fr}.vs>div+div{border-left:0;border-top:2px solid var(--ink)}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  body{font-size:18px}
+  .bar{grid-template-columns:1fr;gap:4px}
+  .timeline{grid-template-columns:1fr;border-top:0;gap:0}
+  .timeline li{border-left:4px solid var(--ink);padding:0 0 22px 22px}
+  .timeline li:last-child{border-left-color:transparent;padding-bottom:0}
+  .timeline li::before{top:2px;left:-14px}
+  .person{padding:18px}
+  .vs>div,.poll,.audio{padding-left:16px;padding-right:16px}
+  .nav .wrap{gap:16px}
+  blockquote{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+
+<div class="prog" aria-hidden="true"><i id="pbar"></i></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:var(--ink)">Reportagem longform · Londrina</div>
+      <h1>Jornalismo <em>sindical</em></h1>
+      <p class="lede">Em Londrina, sindicatos e jornalistas constroem uma comunicação própria para os trabalhadores, enquanto as entidades enfrentam queda de filiados, perda de receita e um mercado de trabalho cada vez mais precário.</p>
+    </div>
+  </div>
+</header>
+<div class="stats"><div class="wrap">
+  <div class="stat"><b>9,2%</b><span>taxa de sindicalização em 2022, contra 11,0% em 2019</span></div>
+  <div class="stat"><b>3 mi</b><span>de sindicalizados perdidos depois da reforma trabalhista, segundo o IBGE</span></div>
+  <div class="stat"><b>22 dias</b><span>de greve de José Maschio contra a Folha de Londrina</span></div>
+  <div class="stat"><b>155 dias</b><span>para fechar o piso dos jornalistas do Paraná em 2026</span></div>
+</div></div>
+
+<main</div></div>
+
+<main class="wrap">
+
+<section id="abertura">
+  <div class="read">
+    <blockquote style="margin-top:0">“A imprensa de uma forma geral, a imprensa hegemônica, ela não costuma trazer a pauta dos trabalhadores, ouvir os trabalhadores, ouvir os sindicatos.”<cite>Elza Caldeira, jornalista do Portal Verdade e apresentadora do Programa Aroeira</cite></blockquote>
+    <p>Foi para ocupar esse espaço que os sindicatos de Londrina passaram a produzir a própria comunicação: o jornalismo sindical, feito pelas entidades para falar com a categoria e com a classe trabalhadora.</p>
+    <p>Essa comunicação se sustenta hoje num cenário de sindicatos fragilizados, de direitos em disputa e de um mercado que paga cada vez menos aos próprios jornalistas. Para entender como se chegou até aqui, é preciso voltar no tempo.</p>
+  </div>
+  <div class="people" id="people" style="margin-top:36px"></div>
+</section>
+
+<section id="origem">
+  <div class="eyebrow">Como nasceu o sindicalismo brasileiro</div>
+  <h2>Um sindicato nascido sob o Estado</h2>
+  <div class="read">
+    <p class="dropcap">A estrutura sindical do país nasceu sob forte presença do Estado. O governo de Getúlio Vargas criou a Lei da Sindicalização, em 1931, e a CLT, em 1943, que passaram a regular a organização dos sindicatos. O financiamento vinha, em grande parte, da contribuição sindical obrigatória, prevista na própria CLT.</p>
+  </div>
+  <ol class="timeline">
+    <li><b>1931</b><span>Lei da Sindicalização, criada no governo de Getúlio Vargas.</span></li>
+    <li><b>1943</b><span>A CLT passa a regular a organização dos sindicatos e prevê a contribuição sindical obrigatória.</span></li>
+    <li><b>1983</b><span>Criação da CUT, depois das greves do ABC paulista do fim dos anos 1970.</span></li>
+    <li><b>1988</b><span>A Constituição acaba com o controle do Estado sobre a criação das entidades, mas mantém a unicidade sindical.</span></li>
+  </ol>
+  <div class="read">
+    <p>A partir do fim dos anos 1970, as greves do ABC paulista e a criação da CUT, em 1983, deram ao movimento um perfil mais combativo e mais independente do governo.</p>
+    <p>A Constituição de 1988 acabou com o controle do Estado sobre a criação das entidades, mas manteve a unicidade sindical, regra que permite um único sindicato por categoria em cada base territorial. Estudos sobre o período apontam que 1988 e 1989 concentraram o maior número de criações de sindicatos.</p>
+  </div>
+</section>
+
+<section id="sindicato">
+  <div class="eyebrow">O que faz um sindicato</div>
+  <h2>Negociar, mobilizar, pressionar</h2>
+  <div class="read">
+    <p>O Sindijor Norte PR, o Sindicato dos Jornalistas Profissionais do Norte do Paraná, representa a categoria na região de Londrina. Uma de suas tarefas é negociar com as empresas a <strong>convenção coletiva de trabalho (CCT)</strong>, documento que fixa o piso salarial, o reajuste e outras condições. As convenções de outras regiões mostram esse formato, como a CCT dos jornalistas de São Paulo, que traz o salário normativo em cláusula própria.</p>
+    <p>A atuação sindical também passa por assembleias, mobilizações e pela pressão política. A FENAJ, a Federação Nacional dos Jornalistas, chegou a levar dirigentes de sindicatos de todas as regiões a Brasília para conversar com líderes partidários sobre a PEC 206/2012, que trata do diploma de jornalismo.</p>
+    <blockquote>“A principal coisa que acontece quando você trabalha em qualquer atividade é você ter compromisso de classe, compromisso social. E isso o sindicato dá.”<cite>José Maschio, o Ganchão, dirigente e secretário-geral do Sindijor Norte PR</cite></blockquote>
+  </div>
+
+  <div class="videos">
+    <div class="vid">
+      <div class="phone"><a class="dv" href="https://drive.google.com/file/d/1ZDSwzoHNRAUuoqP4fZzB5z9a9pHb5BeI/view?usp=drive_link" target="_blank" rel="noopener" data-id="1ZDSwzoHNRAUuoqP4fZzB5z9a9pHb5BeI" data-kind="video" style="background-image:url(media/poster1.jpg)" aria-label="Assistir ao vídeo Quando um sindicato entra em ação? no Google Drive"><span class="dvp" aria-hidden="true"></span><span class="dvl">Assistir no Drive</span></a></div>
+      <h4>Quando um sindicato entra em ação?</h4><p>Negociações sobre salário, benefícios e condições de trabalho.</p>
+    </div>
+    <div class="vid">
+      <div class="phone"><a class="dv" href="https://drive.google.com/file/d/1OjVk1nkzf5DCWLJQl5Mnknnj2ro7ZgVd/view?usp=drive_link" target="_blank" rel="noopener" data-id="1OjVk1nkzf5DCWLJQl5Mnknnj2ro7ZgVd" data-kind="video" style="background-image:url(media/poster2.jpg)" aria-label="Assistir ao vídeo Mobilização e direitos no Google Drive"><span class="dvp" aria-hidden="true"></span><span class="dvl">Assistir no Drive</span></a></div>
+      <h4>Mobilização e direitos</h4><p>Salário mínimo, limitação da carga horária e o exemplo dos bancários. Reportagem de Julia Trajano, UEL.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:36px">
+    <div><b>VT: Jornalismo Sindical</b><span>Vídeo-reportagem no Google Drive. Abre em outra aba.</span></div>
+    <a class="btn" href="https://drive.google.com/file/d/13DHCD512h6iWHGTq1b0sHH7y5w-32nrN/view?usp=drive_link" target="_blank" rel="noopener">Assistir ao VT</a>
+  </div>
+</section>
+
+<section id="fragilizacao">
+  <div class="eyebrow">A fragilização das entidades</div>
+  <h2>Mais sindicatos, menos força</h2>
+  <div class="read">
+    <p>Há dez anos, em 2016, o Cadastro Nacional de Entidades Sindicais (CNES), do Ministério do Trabalho, registrava 16.811 entidades sindicais, entre sindicatos, federações e confederações de trabalhadores e de patrões, segundo o Ipea. Desse total, 16.200 eram sindicatos. Só os de trabalhadores somavam cerca de 11,1 mil em novembro de 2016, de acordo com levantamento publicado pelo Brasil de Fato. Em janeiro de 2023, o Dieese contava 18.698 entidades com registro ativo, 13.026 delas representando trabalhadores.</p>
+  </div>
+  <div class="bars" style="max-width:820px" role="list">
+    <div class="bar" role="listitem"><div><b>Entidades, 2016</b><small>CNES, segundo o Ipea</small></div><div class="track"><div class="fill piso" style="width:84%">16.811</div></div></div>
+    <div class="bar" role="listitem"><div><b>Entidades, jan. 2023</b><small>Dieese</small></div><div class="track"><div class="fill avg" style="width:93.5%">18.698</div></div></div>
+    <div class="bar" role="listitem"><div><b>De trabalhadores, nov. 2016</b><small>Brasil de Fato</small></div><div class="track"><div class="fill piso" style="width:55.5%">cerca de 11,1 mil</div></div></div>
+    <div class="bar" role="listitem"><div><b>De trabalhadores, jan. 2023</b><small>Dieese</small></div><div class="track"><div class="fill avg" style="width:65%">13.026</div></div></div>
+  </div>
+  <div class="read">
+    <p>O número cresce porque a regra da unicidade, criada para evitar a fragmentação, acaba por estimulá-la, segundo o Dieese. Mais entidades, porém, não significam mais força.</p>
+    <p>A reforma trabalhista de 2017 tornou facultativa a contribuição sindical, que antes era obrigatória. Para o Dieese, a mudança asfixiou financeiramente sindicatos e, sobretudo, federações, confederações e centrais. A filiação também caiu: segundo o IBGE, o país perdeu cerca de 3 milhões de sindicalizados depois da reforma, chegando a 10,5 milhões em 2019, enquanto o número de pessoas ocupadas crescia. A taxa de sindicalização passou de 11,0%, em 2019, para 9,2%, em 2022, segundo dados reunidos pelo Dieese. No mesmo período, o emprego com carteira assinada recuou de 35,1 milhões, em 2016, para 32,9 milhões, em 2021, de acordo com o IBGE.</p>
+  </div>
+  <div class="ufsc sm">
+    <div><b>11,0% → 9,2%</b><span>taxa de sindicalização, de 2019 a 2022 (Dieese)</span></div>
+    <div><b>3 mi a menos</b><span>de sindicalizados depois da reforma, chegando a 10,5 milhões em 2019 (IBGE)</span></div>
+    <div><b>35,1 → 32,9 mi</b><span>empregos com carteira assinada, de 2016 a 2021 (IBGE)</span></div>
+  </div>
+
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;margin-top:56px;padding:0">
+    <div class="read">
+      <h3 style="font-size:36px;margin-bottom:10px">O Coletivo dos Sindicatos</h3>
+      <p>Em Londrina, o efeito aparece no dia a dia do Coletivo dos Sindicatos. Elza Caldeira é assessora de comunicação da entidade há cerca de dez anos. Hoje o coletivo tem 18 sindicatos, mas já teve mais de 30 quando ela assumiu. Ela atribui a queda ao governo anterior, que, segundo ela, tentou dizimar os sindicatos, e conta que hoje 13 contribuem mensalmente.</p>
+      <p>Maschio critica quem pede que a entidade não cobre a taxa assistencial e depois reclama quando o resultado não vem como esperado. Para ele, participar do sindicato é assumir um compromisso.</p>
+    </div>
+    <div>
+      <div class="col3" aria-label="Sindicatos do Coletivo: mais de 30 antes, 18 hoje, 13 contribuem">
+        <div style="height:100%">30+<span>já teve</span></div>
+        <div style="height:60%">18<span>hoje</span></div>
+        <div style="height:43%">13<span>contribuem</span></div>
+      </div>
+      <p class="legend-note">Sindicatos do Coletivo de Londrina, segundo Elza Caldeira.</p>
+    </div>
+  </div>
+  <div class="read" style="margin-top:20px">
+    <p>O mundo do trabalho também pesa sobre o movimento. A jornalista Franciele Rodrigues, socióloga, repórter e editora do Portal Verdade, cita o desmantelamento de direitos e novas modalidades, como o trabalho por aplicativo, o trabalho por hora e os contratos intermitentes, que dificultam a representação sindical.</p>
+  </div>
+</section>
+
+<section id="comunicacao">
+  <div class="eyebrow">Jornalismo sindical</div>
+  <h2>A comunicação dos trabalhadores</h2>
+  <div class="read">
+    <p>O jornalismo sindical é a comunicação que essas entidades fazem com os trabalhadores. Um exemplo em Londrina é o <strong>Programa Aroeira</strong>, que vai ao ar aos sábados, a partir das 12h, na Rádio UEL FM (107,9), com cerca de uma hora de duração. Ele trata do cotidiano das lutas sindicais e nasceu no Coletivo dos Sindicatos de Londrina, do qual fazem parte entidades como o Assuel Sindicato e o Sindiprol/Aduel.</p>
+    <p>Elza conta que o Aroeira surgiu durante os protestos contra as reformas da Previdência e trabalhista. Os sindicatos de Londrina já estavam unidos nos atos convocados pelas centrais sindicais e decidiram criar um canal de comunicação. O grupo gravou um piloto, a rádio o levou ao conselho editorial e o programa foi aprovado. Foi em julho de 2018 que o Aroeira entrou no ar, e segue na Rádio UEL até hoje.</p>
+    <p>Segundo Elza, a notícia costuma chegar pronta, ouvindo os patrões e sem mostrar com clareza a perda de direitos. O Aroeira, afirma, também incentiva os trabalhadores a lutarem pelos direitos e a se filiarem a um sindicato, porque, nas palavras dela, “juntos somos mais fortes”.</p>
+    <p>Os sindicatos pertencem a centrais diferentes, e há pautas distintas entre servidores públicos e trabalhadores da iniciativa privada, então ela atua como mediadora. Para Elza, o coletivo “tem sido modelo pro Brasil, principalmente por causa da valorização da comunicação”, e mantém dois canais próprios: o Portal Verdade e o Aroeira.</p>
+    <h3 style="font-size:32px;margin:34px 0 14px">No impresso e no digital</h3>
+    <p>Armando Tim trabalha há 39 anos como assessor de imprensa no Sindicato dos Bancários, onde cuida da parte impressa e da digital. Segundo ele, o papel do jornalista no sindicato é “coordenar e produzir os materiais jornalísticos para informar a categoria, a população, às vezes, e a classe trabalhadora”.</p>
+    <p>Na prática, ele é responsável pelo jornal quinzenal <em>Vida Bancária</em>, que chama de “cartão postal” da entidade, e pela atualização do site. O trabalho atende quatro sindicatos de bancários da região, entre eles os de Londrina e de Apucarana, e mistura conteúdo local com matérias de fora. Ele também diz que a comunicação sindical dialoga com a CUT, que reúne trabalhadores de várias categorias do país, e com pautas gerais, como as reformas trabalhista e da previdência.</p>
+    <p>Para ele, a comunicação sindical não é amadora: “Aqui é a profissionalização da comunicação, não é uma coisa amadora.” E reforça o compromisso com a informação: “Tudo que a gente informa aqui é o que está acontecendo de fato.”</p>
+  </div>
+</section>
+
+<section id="desafios">
+  <div class="eyebrow">Os desafios do jornalismo sindical hoje</div>
+  <h2>Nadando contra a corrente</h2>
+  <div class="read">
+    <p>Franciele, que também atua na produção do programa Aroeira, vê o jornalismo sindical como comunicação contra-hegemônica. Segundo ela, mesmo diante das mídias tradicionais, como TV e rádio, ele já está “nadando contra a corrente”. Em Londrina, diz, os meios de comunicação estão muito concentrados, o que reduz a visibilidade dessas pautas.</p>
+    <p>As redes sociais têm um lado positivo: funcionam como “um trampolim” para os conteúdos e permitem furar as bolhas dos sindicatos, com leitores que chegam ao portal por reposts no Instagram e pelo Facebook. O problema é que muita gente lê só a chamada no Instagram, o que, segundo ela, pode levar a uma visão deturpada do conteúdo.</p>
+    <blockquote>Uma das principais funções do jornalismo é o interesse público, “que a pessoa possa se orientar a partir daquela informação”.<cite>Franciele Rodrigues, Portal Verdade</cite></blockquote>
+  </div>
+</section>
+
+<section id="londrina">
+  <div class="eyebrow">A realidade de quem faz jornalismo em Londrina</div>
+  <h2>Greve e um mercado que mudou</h2>
+  <div class="read">
+    <p>Maschio passou 22 dias em greve contra a Folha de Londrina. “Eu sabia no primeiro dia que estava demitido, porque eu era um dos líderes da greve”, conta. Para ele, a luta tem custo: “Você tem os prejuízos, mas não pode abrir mão do que tem de interesse.”</p>
+    <p>Depois, trabalhou na Folha de S.Paulo de 1987 a 2010, segundo conta, e diz ter vivido “o último bom tempo do jornalismo”.</p>
+    <p>Hoje, o cenário é outro. “Em termos de salarinho, acabou esse boom. Só que, por outro lado, vocês têm uma ampla, imensa gama de oportunidades, redes sociais, blog”, afirma Maschio. Para ele, “cabe a vocês descobrirem esse mercado que está aí para conquistar”.</p>
+  </div>
+</section>
+
+<section id="pisos">
+  <div class="eyebrow">Quanto ganha um jornalista</div>
+  <h2>Os pisos pelo país</h2>
+  <div class="read">
+    <p>A remuneração é um dos pontos mais sensíveis da categoria. Em 2026, a negociação do piso salarial dos jornalistas do Paraná levou 155 dias entre as entidades patronais (SERT-PR e Sindejor-PR) e os sindicatos SindijorPR e Sindijor Norte PR, segundo a Prensa Mercosur. O Dieese calculou que o piso precisaria chegar a R$ 5.290,87 para repor as perdas acumuladas.</p>
+  </div>
+  <div class="band" style="margin-block:30px 0">
+    <h3>O piso do Paraná, medido</h3>
+    <div class="bars" id="bars" role="list"></div>
+    <p class="legend-note">Piso é o mínimo fixado em convenção. Média é a remuneração média dos jornalistas com carteira assinada. Os dois números medem coisas diferentes.</p>
+  </div>
+  <div class="read" style="margin-top:34px">
+    <p>Os pisos variam conforme o estado, a jornada, o tipo de veículo e o porte do município. O piso é diferente da média. Neste ano, a remuneração média dos jornalistas com carteira assinada foi de R$ 6.669,70, segundo um estudo do Dieese para a FENAJ divulgado pela CUT, a partir da RAIS.</p>
+  </div>
+  <p class="kicker" style="margin:26px 0 12px">Toque ou clique direto em um estado do mapa, ou escolha pela lista ou por uma faixa, para ver o valor.</p>
+  <div class="filters" id="filters"></div>
+  <div class="mapgrid">
+    <div class="mapwrap" id="mapwrap">
+      <figure class="imap" id="imap">
+        <img src="media/mapa-pisos.jpg" alt="Infográfico: mapa do Brasil colorido por faixa de piso salarial dos jornalistas, com RN R$ 1.634,20, AL R$ 5.000,92 e PR R$ 4.809,96. Média salarial Brasil R$ 6.669,70. Fonte: Fenaj 2025/2026.">
+        <div class="tip" id="tip" hidden></div>
+      </figure>
+    </div>
+    <aside class="info" id="info" aria-live="polite"></aside>
+    <div class="mapctl">
+      <button type="button" class="btn alt zoombtn" id="zoombtn" aria-pressed="false">Ampliar o mapa</button>
+      <div class="sigs" id="sigs" role="group" aria-label="Escolher estado"></div>
+    </div>
+  </div>
+  <p style="margin:18px 0 0"><a class="btn alt" href="https://drive.google.com/file/d/1NIEPf1Ydl68LoULhapC89afQNoShyrqK/view?usp=drive_link" target="_blank" rel="noopener">Abrir o infográfico original no Drive</a></p>
+  <p class="src">Fonte: Fenaj 2025/2026. Média salarial: RAIS-MTE. Valores exatos só aparecem onde o infográfico os traz; nos demais estados, o mapa informa apenas a faixa.</p>
+</section>
+
+<section id="diploma">
+  <div class="eyebrow">O diploma de Jornalismo</div>
+  <h2>Da exigência de 1969 à PEC 206/2012</h2>
+  <div class="read">
+    <p>A exigência do diploma para exercer a profissão está em vigor desde 1969. Por enquanto, vale a decisão de 2009: o diploma não é exigido, e a PEC 206/2012 aguarda votação no Plenário da Câmara, segundo a Rádio Senado. A possível revisão no STF ainda depende de um novo julgamento.</p>
+  </div>
+  <ol class="timeline">
+    <li><b>1969</b><span>Entra em vigor a exigência do diploma para exercer a profissão.</span></li>
+    <li><b>2009</b><span>Vale a decisão de 2009: o diploma não é exigido.</span></li>
+    <li><b>2012</b><span>A PEC 206/2012 aguarda votação no Plenário da Câmara.</span></li>
+    <li><b>Ago 2026</b><span>Possível revisão no STF, que ainda depende de um novo julgamento.</span></li>
+  </ol>
+  <div class="audio">
+    <div class="audio-h"><span class="eyebrow" style="margin:0">Boletim · áudio · 1 min 53 s</span><b>A PEC do diploma</b></div>
+    <a class="dv dv-audio" href="https://drive.google.com/file/d/1QUkjH2vSPjOb08kZsli5XX1ryKaabjZo/view?usp=drive_link" target="_blank" rel="noopener" data-id="1QUkjH2vSPjOb08kZsli5XX1ryKaabjZo" data-kind="audio" aria-label="Ouvir o boletim da PEC no Google Drive"><span class="dvp" aria-hidden="true"></span><span class="dvl">Ouvir no Drive</span></a>
+  </div>
+  <div class="read" style="margin-top:30px">
+    <p>É nesse intervalo que o sindicato aparece como espaço de defesa da profissão, tanto na negociação do piso e das condições de trabalho quanto na disputa sobre quem pode exercer o jornalismo.</p>
+  </div>
+
+  <div class="vs">
+    <div class="pro">
+      <span class="who">Os argumentos a favor</span>
+      <h3>Formação é valorização</h3>
+      <p>Para a FENAJ, a defesa do diploma é a defesa da formação, da valorização profissional e do jornalismo de que a sociedade precisa, conforme a mobilização nacional da entidade. A federação também sustenta que a exigência permitiu o crescimento e o aperfeiçoamento dos cursos de graduação e de especialização, o que fortaleceu o mercado de trabalho.</p>
+      <p>Para Maschio, a universidade existe para formar pessoas cientes da função social do jornalismo, e a ética é central. “O jornalismo pode matar por falta de ética ou por falta de exercício profissional. Pode causar dramas”, afirma. Segundo ele, essa noção precisa vir “desde o primeiro ano de faculdade”.</p>
+      <p>Armando Tim também liga a qualidade da informação à formação. “O jornalismo é uma coisa que tem que lidar com informação, é muito sério, tem que ser um profissional, um jornalista formado, um jornalista com experiência principalmente”, afirma.</p>
+    </div>
+    <div>
+      <span class="who" style="color:var(--red)">Os argumentos contra</span>
+      <h3>Liberdade de expressão</h3>
+      <p>A decisão de 2009 partiu da ideia de que o jornalismo está diretamente ligado à liberdade de expressão. A ANJ, associação que reúne os maiores jornais do país, defendia à época que o diploma funciona como barreira à liberdade de expressão. Em agosto de 2026, a entidade questionou a oportunidade de retomar a discussão justamente em meio às investigações envolvendo fontes, de acordo com o Correio da Manhã. Dino, por sua vez, vê no avanço das redes sociais um motivo para reabrir o debate.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:clamp(28px,4vw,42px);margin:56px 0 4px">Quem atua na profissão hoje</h3>
+  <p class="read kicker" style="max-width:680px">Pesquisa Perfil do Jornalista Brasileiro, UFSC, edição 2021, com 6.650 respostas válidas.</p>
+  <div class="ufsc">
+    <div><b>98,3%</b><span>com ensino superior concluído, em curso ou além da graduação</span></div>
+    <div><b>94,1%</b><span>graduados em Jornalismo ou Comunicação com habilitação em Jornalismo</span></div>
+    <div><b>28,6%</b><span>com especialização</span></div>
+    <div><b>14,7%</b><span>com mestrado</span></div>
+    <div><b>25%</b><span>eram filiados a um sindicato em 2012</span></div>
+  </div>
+  <p class="legend-note" style="margin-top:14px;max-width:680px">O relatório não permite concluir se o fim da exigência mudou o perfil de quem entra na profissão. A sindicalização entre os jornalistas era baixa: em 2012, 25% eram filiados a um sindicato, dado que o mesmo relatório usa como comparação.</p>
+
+  <div class="read" style="margin-top:34px">
+    <p>Sobre a confusão entre jornalistas, influenciadores e blogueiros, Maschio se diz otimista: “Vai chegar uma hora em que a própria sociedade fala, não, queremos informação correta.”</p>
+  </div>
+</section>
+
+<section id="ruas">
+  <div class="eyebrow">Voz das ruas</div>
+  <h2>O que dizem as pessoas</h2>
+  <div class="read"><p>Entrevistas de rua com estudantes e passantes sobre o diploma e a informação que chega até eles.</p></div>
+  <div class="videos">
+    <div class="vid">
+      <div class="phone"><a class="dv" href="https://drive.google.com/file/d/1W3jbIQVIiBkuaRuWeUiPrtt4IuDtXyQS/view?usp=drive_link" target="_blank" rel="noopener" data-id="1W3jbIQVIiBkuaRuWeUiPrtt4IuDtXyQS" data-kind="video" style="background-image:url(media/poster3.jpg)" aria-label="Assistir ao vídeo Voz das ruas no Google Drive"><span class="dvp" aria-hidden="true"></span><span class="dvl">Assistir no Drive</span></a></div>
+    </div>
+    <div class="read" style="align-self:center">
+      <p class="kicker" style="font-size:16px">Antes de ouvir, pense: você sabe dizer se uma notícia foi feita por um jornalista formado? Depois, teste o que você entendeu no quiz abaixo.</p>
+      <a class="btn alt" href="#quiz">Ir para o quiz</a>
+    </div>
+  </div>
+
+  <div class="poll" id="enquete">
+    <div class="eyebrow">Enquete · Universidade Estadual de Londrina</div>
+    <h3>O que você acha sobre a obrigatoriedade do diploma de jornalismo no Brasil?</h3>
+    <p class="kicker">A exigência deixou de valer em 17 de junho de 2009, após decisão do STF que a considerou inconstitucional.</p>
+    <div class="opts" id="poll-opts" role="radiogroup" aria-label="Sua opinião"></div>
+    <div id="poll-out"></div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="eyebrow">Teste o que você leu</div>
+  <h2>Quiz do diploma</h2>
+  <div class="read"><p>Cinco perguntas sobre a formação em Jornalismo, o diploma e o papel do sindicato.</p></div>
+  <div class="quiz" id="quiz-box"></div>
+  <p style="margin-top:20px"><a class="btn alt" href="https://docs.google.com/forms/d/e/1FAIpQLSdsPgL9OMvZeB3LbSxRvL3EaX76qSAiiZNdsizGITlwfBT-UQ/viewform" target="_blank" rel="noopener">Responder no formulário oficial</a></p>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <div>
+    <div class="big">Juntos<br>somos mais fortes.</div>
+  </div>
+  <div>
+    <h3>Fontes</h3>
+    <ul>
+      <li>Entrevistas: José Maschio (Ganchão), Elza Caldeira, Armando Tim, Franciele Rodrigues</li>
+      <li>Ipea (CNES), Brasil de Fato e Dieese, sobre o número de entidades sindicais</li>
+      <li>IBGE e Dieese, sobre sindicalização e emprego com carteira</li>
+      <li>Prensa Mercosur, sobre a negociação do piso no Paraná</li>
+      <li>Dieese para a FENAJ, divulgado pela CUT, a partir da RAIS-MTE</li>
+      <li>FENAJ 2025/2026, pisos por estado</li>
+      <li>UFSC, Perfil do Jornalista Brasileiro (2021)</li>
+      <li>Rádio Senado e Correio da Manhã, sobre a PEC 206/2012 e a posição da ANJ</li>
+    </ul>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var fmt=function(v){return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})};
+
+  /* ===== Barras de comparação ===== */
+  var barsData=[
+    {l:'RN',s:'menor valor informado',v:1634.20,c:'piso'},
+    {l:'PR',s:'piso 2026',v:4809.96,c:'piso'},
+    {l:'AL',s:'maior valor informado',v:5000.92,c:'piso'},
+    {l:'Dieese',s:'reposição das perdas (PR)',v:5290.87,c:'ref'},
+    {l:'Média Brasil',s:'remuneração média, RAIS-MTE',v:6669.70,c:'avg'}
+  ], max=7000, bars=$('#bars');
+  barsData.forEach(function(d){
+    var r=document.createElement('div');r.className='bar';r.setAttribute('role','listitem');
+    r.innerHTML='<div><b>'+d.l+'</b><small>'+d.s+'</small></div><div class="track"><div class="fill '+d.c+'" style="width:0" data-w="'+(d.v/max*100)+'">'+fmt(d.v)+'</div></div>';
+    bars.appendChild(r);
+  });
+
+  /* ===== Elenco ===== */
+  var people=[
+    {h:'José Maschio (Ganchão)',r:'Dirigente e secretário-geral do Sindijor Norte PR',q:'Você tem os prejuízos, mas não pode abrir mão do que tem de interesse.'},
+    {h:'Elza Caldeira',r:'Jornalista do Portal Verdade, apresentadora do Aroeira e assessora do Coletivo dos Sindicatos',q:'Juntos somos mais fortes.'},
+    {h:'Armando Tim',r:'Assessor de imprensa do Sindicato dos Bancários há 39 anos',q:'Aqui é a profissionalização da comunicação, não é uma coisa amadora.'},
+    {h:'Franciele Rodrigues',r:'Socióloga, repórter e editora do Portal Verdade, atua na produção do Aroeira',q:'Que a pessoa possa se orientar a partir daquela informação.'}
+  ];
+  var pc=$('#people');
+  people.forEach(function(d){
+    var c=document.createElement('article');c.className='person';
+    c.innerHTML='<h4>'+d.h+'</h4><div class="role">'+d.r+'</div><q>'+d.q+'</q>';
+    pc.appendChild(c);
+  });
+
+  /* ===== Mapa: infográfico com áreas clicáveis ===== */
+  var L=[{k:0,t:'Não definido'},{k:1,t:'R$ 1.000 a 2.000'},{k:2,t:'R$ 2.001 a 3.000'},{k:3,t:'R$ 3.001 a 4.000'},{k:4,t:'R$ 4.001 a 5.000'},{k:5,t:'Acima de R$ 5.000'}];
+  var SW=['#E1E5DF','#CFDECB','#B5CEAD','#9DBB8E','#789F65','#4F7332'];
+  var S=[
+    ['RR','Roraima',0],['AP','Amapá',0],['RO','Rondônia',0],
+    ['PA','Pará',1],['RN','Rio Grande do Norte',1,1634.20],
+    ['AM','Amazonas',2],['PI','Piauí',2],['PB','Paraíba',2],['PE','Pernambuco',2],['SE','Sergipe',2],['ES','Espírito Santo',2],['MS','Mato Grosso do Sul',2],
+    ['AC','Acre',3],['MA','Maranhão',3],['CE','Ceará',3],['TO','Tocantins',3],['BA','Bahia',3],['MT','Mato Grosso',3],['GO','Goiás',3],['DF','Distrito Federal',3],['MG','Minas Gerais',3],['RJ','Rio de Janeiro',3],['SC','Santa Catarina',3],['RS','Rio Grande do Sul',3],
+    ['SP','São Paulo',4],['PR','Paraná',4,4809.96],
+    ['AL','Alagoas',5,5000.92]
+  ];
+  var XY={RR:[483,348],AP:[750,377],AM:[410,520],PA:[718,555],MA:[927,545],PI:[973,628],CE:[1055,540],RN:[1213,538],PB:[1230,600],PE:[1228,640],AL:[1207,687],SE:[1168,722],BA:[1015,746],TO:[830,702],AC:[275,677],RO:[441,717],MT:[632,771],GO:[785,869],DF:[855,817],MG:[945,923],MS:[676,970],ES:[1090,970],RJ:[1046,1043],SP:[832,1031],PR:[748,1103],SC:[795,1171],RS:[707,1238]};
+  var SMALL={RN:1,PB:1,PE:1,AL:1,SE:1,ES:1,RJ:1,DF:1};
+  var imap=$('#imap'),tip=$('#tip'),info=$('#info'),filt=$('#filters'),sigs=$('#sigs'),sel=null,flt=null,hots={},sbtn={};
+  function lab(s){return s[3]?fmt(s[3]):(s[2]===0?'sem piso definido':L[s[2]].t)}
+  var PATHS={"RR":"M512 277 L497 293 L477 303 L459 304 L442 311 L418 309 L409 304 L402 304 L413 320 L413 327 L418 337 L421 354 L429 352 L451 363 L450 372 L458 391 L456 393 L455 415 L462 430 L457 432 L457 435 L471 443 L480 453 L483 452 L485 435 L489 431 L498 429 L506 438 L515 435 L518 432 L517 424 L524 409 L552 409 L555 407 L554 380 L545 378 L532 365 L529 352 L523 343 L523 333 L527 321 L534 311 L531 297 L520 289Z","AP":"M755 300 L745 309 L732 329 L725 345 L719 351 L680 357 L666 353 L665 356 L666 366 L679 367 L684 373 L698 379 L700 388 L708 396 L713 418 L721 425 L724 437 L739 451 L745 451 L759 435 L757 421 L760 415 L771 407 L782 394 L791 390 L794 381 L794 369 L778 358 L769 346 L763 331 L762 311Z","AM":"M621 475 L615 474 L603 463 L592 460 L578 451 L563 437 L554 423 L555 409 L524 410 L518 424 L519 432 L510 439 L504 438 L498 430 L489 432 L486 435 L484 452 L480 454 L471 444 L461 440 L456 435 L456 432 L460 431 L460 427 L454 415 L456 387 L449 372 L450 363 L431 354 L421 355 L421 361 L411 376 L383 390 L360 395 L349 392 L335 380 L326 360 L313 367 L299 370 L264 370 L264 391 L258 400 L258 417 L268 426 L275 442 L271 478 L264 512 L260 520 L251 527 L236 528 L228 534 L205 538 L183 552 L179 566 L173 576 L173 584 L170 590 L158 600 L158 607 L180 617 L248 633 L254 639 L261 640 L269 646 L273 646 L307 664 L330 673 L332 676 L343 678 L355 665 L372 668 L384 661 L390 662 L394 654 L412 655 L415 652 L414 648 L420 644 L419 640 L432 629 L452 631 L470 651 L475 651 L478 648 L483 650 L482 666 L484 671 L486 671 L484 665 L487 651 L534 652 L566 649 L568 638 L572 633 L569 624 L574 615 L573 605 L567 599 L566 593 L571 586 L572 579 L575 578 L580 568 L582 558 L588 550 L589 542 L600 524 L606 505 L609 504Z","PA":"M557 380 L554 383 L555 423 L559 432 L578 450 L592 459 L603 462 L615 473 L622 475 L612 500 L607 505 L601 524 L591 540 L591 545 L576 578 L573 579 L573 584 L567 593 L568 599 L574 605 L574 611 L579 615 L578 618 L586 635 L588 649 L611 668 L622 671 L761 677 L787 683 L792 663 L805 650 L814 632 L815 624 L810 619 L810 614 L814 609 L814 599 L829 590 L840 572 L841 563 L830 556 L847 540 L855 537 L871 517 L874 506 L881 500 L883 495 L883 486 L889 480 L889 475 L893 470 L897 446 L887 443 L879 437 L852 433 L847 434 L839 445 L825 457 L810 462 L788 464 L778 461 L773 456 L768 441 L759 436 L745 452 L739 452 L723 437 L720 425 L712 418 L707 396 L699 388 L697 379 L684 374 L679 368 L666 367 L664 365 L665 352 L658 348 L634 350 L631 356 L622 363 L599 363 L588 370Z","MA":"M902 448 L899 448 L896 452 L894 470 L890 475 L890 480 L885 485 L883 499 L875 506 L872 517 L855 538 L851 538 L836 550 L836 552 L847 555 L851 560 L859 563 L863 589 L860 590 L860 602 L856 605 L856 608 L862 609 L862 615 L874 630 L886 630 L887 638 L877 640 L877 650 L872 654 L872 657 L878 660 L877 665 L886 670 L884 677 L888 680 L887 684 L891 686 L900 686 L902 683 L902 667 L899 656 L904 641 L909 636 L909 630 L912 628 L912 619 L936 610 L941 603 L948 600 L952 593 L964 593 L971 596 L974 593 L978 594 L983 591 L984 583 L978 576 L976 564 L981 561 L985 554 L980 541 L982 537 L981 526 L988 517 L989 509 L1003 504 L1010 496 L1010 492 L995 490 L975 480 L949 481 L940 474 L937 465 L927 457 L916 456Z","PI":"M1029 491 L1011 492 L1011 496 L1003 505 L990 509 L989 517 L982 526 L984 534 L982 542 L986 554 L982 561 L978 563 L979 576 L985 583 L984 591 L971 597 L964 594 L952 594 L945 604 L941 604 L936 611 L914 618 L913 628 L910 630 L911 634 L905 641 L906 644 L900 656 L903 667 L903 683 L899 687 L899 691 L912 693 L915 701 L920 706 L929 707 L940 700 L951 699 L962 687 L961 671 L965 667 L978 667 L990 671 L995 670 L999 665 L1011 663 L1016 655 L1022 655 L1027 646 L1045 631 L1043 614 L1047 611 L1050 596 L1047 592 L1042 591 L1034 557 L1035 553 L1030 544 L1033 527 L1028 520 L1028 514 L1023 505 L1028 498Z","CE":"M1030 493 L1030 497 L1024 505 L1030 515 L1029 520 L1035 528 L1032 535 L1032 545 L1036 553 L1043 591 L1047 591 L1051 596 L1048 611 L1068 610 L1077 613 L1089 623 L1090 619 L1095 617 L1095 614 L1099 611 L1094 605 L1097 583 L1103 575 L1109 572 L1120 550 L1130 544 L1130 541 L1118 534 L1100 515 L1061 493 L1051 491Z","RN":"M1098 585 L1112 588 L1122 579 L1135 576 L1136 579 L1129 590 L1133 594 L1149 592 L1151 587 L1156 586 L1158 583 L1161 584 L1162 588 L1181 587 L1192 589 L1186 563 L1180 554 L1161 550 L1140 549 L1133 544 L1127 545 L1121 550 L1110 572 L1103 576Z","PB":"M1096 595 L1096 606 L1100 609 L1097 617 L1100 621 L1117 621 L1129 611 L1137 609 L1142 614 L1134 628 L1137 628 L1142 634 L1150 633 L1156 625 L1170 626 L1176 623 L1177 618 L1182 619 L1188 614 L1198 617 L1200 614 L1200 604 L1193 590 L1181 588 L1162 589 L1157 585 L1149 593 L1139 593 L1135 596 L1127 591 L1135 577 L1122 580 L1110 590 L1101 586 L1098 588Z","PE":"M1196 618 L1188 615 L1182 620 L1178 620 L1173 626 L1156 626 L1150 634 L1145 636 L1131 627 L1137 622 L1137 617 L1140 615 L1137 610 L1129 612 L1117 622 L1102 623 L1097 619 L1092 619 L1089 624 L1068 611 L1047 612 L1044 614 L1047 630 L1029 647 L1037 652 L1038 661 L1042 662 L1043 669 L1047 669 L1057 659 L1063 658 L1065 652 L1070 651 L1071 646 L1077 645 L1102 654 L1107 658 L1107 666 L1120 654 L1129 654 L1142 664 L1154 663 L1169 652 L1190 652 L1190 645 L1196 630Z","AL":"M1187 653 L1169 653 L1157 663 L1144 665 L1138 663 L1129 655 L1120 655 L1111 662 L1111 666 L1138 681 L1144 681 L1146 688 L1157 691 L1184 660Z","SE":"M1112 669 L1112 674 L1120 684 L1118 694 L1120 700 L1110 703 L1109 707 L1118 724 L1127 726 L1138 707 L1155 692 L1146 689 L1144 682 L1138 682Z","BA":"M908 693 L905 699 L897 703 L895 710 L889 711 L887 717 L888 723 L896 722 L901 726 L899 730 L901 737 L894 739 L894 750 L897 752 L896 760 L901 772 L896 780 L897 792 L903 802 L901 824 L907 825 L912 819 L916 820 L921 812 L927 811 L942 800 L960 801 L962 805 L958 813 L961 815 L969 814 L972 811 L982 811 L990 817 L994 816 L1004 821 L1006 825 L1016 825 L1023 832 L1025 841 L1031 841 L1032 838 L1038 837 L1045 838 L1048 842 L1054 840 L1065 853 L1055 865 L1054 871 L1046 874 L1045 885 L1049 892 L1055 895 L1057 903 L1065 909 L1069 909 L1080 896 L1080 875 L1087 849 L1084 824 L1085 776 L1093 765 L1105 760 L1110 755 L1125 730 L1125 727 L1122 728 L1116 723 L1107 704 L1119 700 L1117 696 L1118 683 L1111 674 L1110 668 L1106 666 L1106 658 L1082 647 L1075 647 L1063 659 L1057 660 L1054 665 L1047 670 L1043 670 L1041 662 L1036 660 L1036 652 L1026 649 L1021 657 L1016 656 L1011 664 L999 666 L995 671 L986 672 L978 668 L965 668 L962 671 L964 686 L951 700 L940 701 L933 707 L927 709 L920 707 L913 700 L912 694Z","TO":"M840 554 L832 554 L832 558 L837 558 L842 563 L837 582 L825 595 L815 599 L815 609 L811 614 L811 619 L816 624 L814 635 L806 650 L793 663 L788 677 L789 682 L785 684 L785 692 L779 699 L775 758 L780 760 L784 757 L787 765 L801 772 L810 771 L813 768 L813 758 L819 756 L823 757 L826 763 L826 774 L831 771 L853 773 L855 768 L866 771 L867 766 L891 763 L894 761 L896 754 L892 749 L894 746 L892 740 L895 737 L900 737 L897 731 L900 726 L898 724 L891 725 L885 721 L888 711 L896 708 L895 704 L905 698 L906 693 L891 690 L885 683 L886 679 L882 676 L885 670 L881 670 L876 665 L876 659 L870 657 L876 650 L874 645 L876 640 L886 638 L885 630 L874 631 L864 621 L860 613 L861 609 L857 610 L854 606 L858 603 L858 593 L861 589 L858 563Z","AC":"M154 614 L158 626 L177 654 L177 663 L192 667 L201 680 L225 678 L235 681 L243 692 L243 706 L247 708 L274 705 L296 709 L306 701 L317 698 L324 691 L333 688 L342 680 L342 678 L327 675 L322 670 L317 670 L313 666 L269 647 L261 641 L254 640 L248 634 L243 635 L231 629 L181 619 L179 616 L174 616 L172 613 L167 613 L160 608 L157 608Z","RO":"M347 675 L347 678 L362 675 L370 676 L379 683 L382 689 L383 719 L392 734 L407 748 L440 754 L450 762 L467 768 L477 777 L491 776 L505 781 L514 776 L517 766 L522 762 L528 751 L527 743 L520 738 L527 714 L510 708 L488 708 L486 706 L487 698 L481 666 L483 651 L470 652 L452 632 L431 631 L421 639 L421 644 L412 656 L394 655 L389 664 L384 662 L372 669 L355 666Z","MT":"M488 653 L486 661 L488 707 L510 707 L528 714 L521 738 L528 743 L530 748 L523 762 L518 766 L515 776 L508 781 L515 793 L515 800 L519 807 L519 817 L515 826 L522 836 L523 852 L559 857 L567 868 L569 883 L580 887 L588 898 L596 899 L603 896 L612 884 L624 882 L625 880 L633 881 L653 892 L673 889 L684 891 L688 884 L692 882 L695 884 L696 891 L689 898 L689 901 L709 903 L711 898 L708 882 L720 866 L721 856 L735 842 L743 841 L746 834 L749 833 L750 824 L755 818 L762 818 L764 801 L768 792 L767 786 L776 775 L777 760 L774 758 L775 732 L778 715 L777 701 L780 697 L781 682 L761 678 L662 675 L622 672 L611 669 L587 649 L585 635 L577 618 L577 613 L575 613 L575 619 L570 624 L573 633 L569 638 L570 643 L566 650 L534 653Z","GO":"M897 762 L879 767 L867 767 L868 771 L866 773 L861 773 L855 769 L855 772 L850 775 L831 772 L827 776 L824 774 L826 766 L821 757 L814 758 L814 768 L804 774 L787 766 L784 759 L778 762 L778 773 L769 783 L764 817 L761 820 L756 819 L751 824 L750 833 L747 834 L741 844 L735 843 L723 855 L723 862 L716 870 L711 881 L710 894 L713 899 L713 912 L719 915 L718 922 L734 925 L737 929 L764 940 L771 947 L769 939 L779 932 L786 921 L800 918 L812 919 L819 914 L850 916 L863 907 L864 892 L860 885 L869 873 L862 859 L865 858 L866 851 L876 844 L873 834 L874 823 L885 820 L883 812 L886 810 L895 815 L899 812 L898 794 L895 787 L895 780 L899 776Z","DF":"M844 837 L845 847 L861 847 L861 837Z","MG":"M1055 842 L1048 843 L1046 840 L1038 838 L1026 843 L1023 840 L1021 831 L1016 826 L1006 826 L1004 822 L996 818 L991 819 L982 812 L977 814 L972 812 L969 815 L961 816 L955 811 L955 806 L960 807 L960 802 L942 801 L927 812 L921 813 L916 821 L911 821 L907 826 L900 824 L900 815 L895 816 L886 811 L886 820 L875 823 L876 830 L874 834 L878 843 L867 851 L867 856 L863 859 L870 873 L861 885 L865 892 L865 906 L850 917 L817 916 L812 920 L800 919 L787 922 L779 934 L770 939 L773 946 L768 948 L766 959 L772 962 L780 955 L791 959 L806 959 L812 962 L814 968 L851 964 L855 960 L862 961 L866 965 L866 973 L870 976 L869 988 L872 999 L887 1004 L883 1011 L884 1023 L881 1026 L882 1030 L889 1034 L891 1044 L905 1043 L909 1036 L917 1037 L923 1033 L935 1032 L944 1026 L953 1024 L952 1021 L956 1019 L967 1020 L970 1016 L984 1017 L987 1013 L995 1014 L998 1008 L996 1003 L1000 1000 L1002 988 L1010 980 L1011 967 L1013 965 L1023 966 L1029 951 L1035 944 L1035 936 L1026 928 L1028 925 L1035 925 L1029 911 L1038 903 L1048 899 L1055 900 L1054 895 L1047 891 L1043 881 L1045 874 L1053 871 L1054 865 L1064 853Z","MS":"M615 883 L602 898 L589 899 L592 916 L588 933 L579 951 L580 963 L578 966 L585 985 L583 1019 L606 1022 L621 1021 L635 1025 L644 1037 L651 1073 L669 1072 L680 1078 L684 1074 L687 1060 L694 1057 L696 1046 L730 1020 L737 1009 L737 1005 L743 999 L743 994 L749 986 L751 978 L767 963 L765 959 L767 945 L764 941 L743 933 L734 926 L729 926 L726 923 L719 924 L717 922 L718 915 L712 912 L711 904 L690 903 L688 898 L694 892 L694 884 L692 883 L683 893 L678 893 L675 890 L653 893 L633 882Z","ES":"M1052 900 L1038 904 L1030 911 L1036 925 L1028 926 L1028 929 L1031 929 L1036 936 L1036 944 L1030 951 L1023 967 L1013 966 L1011 969 L1011 980 L1015 986 L1015 994 L1024 998 L1033 998 L1037 987 L1049 974 L1056 956 L1066 944 L1068 910Z","RJ":"M1031 999 L1024 999 L1013 993 L1014 986 L1009 983 L1004 986 L1001 994 L1002 999 L998 1001 L999 1008 L994 1016 L987 1014 L982 1019 L956 1020 L953 1025 L936 1032 L940 1038 L946 1036 L949 1039 L934 1046 L933 1049 L952 1043 L1004 1042 L1008 1031 L1015 1024 L1031 1017Z","SP":"M713 1033 L714 1036 L730 1038 L740 1036 L763 1042 L769 1041 L773 1045 L794 1045 L803 1050 L806 1054 L804 1060 L807 1065 L807 1075 L813 1083 L811 1096 L815 1098 L831 1096 L833 1098 L831 1107 L840 1106 L842 1110 L846 1109 L856 1096 L869 1088 L878 1079 L900 1067 L913 1067 L920 1060 L931 1055 L934 1045 L947 1040 L946 1037 L940 1039 L930 1033 L917 1038 L909 1037 L905 1044 L892 1046 L888 1042 L888 1034 L880 1029 L885 1003 L875 1002 L870 998 L867 987 L869 976 L865 973 L862 962 L853 962 L850 966 L825 967 L822 972 L820 968 L815 970 L809 961 L791 960 L778 957 L774 962 L768 963 L752 978 L750 986 L744 994 L744 999 L739 1004 L739 1008 L731 1020Z","PR":"M679 1079 L681 1104 L675 1120 L686 1123 L691 1128 L698 1143 L707 1142 L711 1145 L735 1147 L744 1153 L758 1153 L761 1142 L770 1143 L776 1135 L796 1136 L801 1139 L827 1135 L841 1112 L840 1107 L834 1109 L830 1107 L831 1097 L815 1099 L810 1096 L811 1082 L805 1074 L804 1052 L794 1046 L773 1046 L769 1042 L763 1043 L740 1037 L735 1040 L711 1037 L697 1046 L696 1056 L688 1060 L685 1074Z","SC":"M826 1136 L817 1136 L807 1141 L802 1141 L796 1137 L777 1137 L770 1144 L763 1143 L759 1147 L758 1154 L744 1154 L735 1149 L711 1146 L704 1143 L696 1144 L696 1162 L693 1170 L697 1170 L699 1167 L714 1171 L729 1170 L731 1177 L739 1175 L741 1179 L749 1180 L769 1192 L777 1209 L787 1212 L800 1210 L801 1213 L797 1217 L797 1227 L789 1231 L789 1234 L793 1236 L795 1233 L800 1233 L821 1212 L828 1194Z","RS":"M699 1168 L697 1171 L690 1171 L680 1179 L664 1186 L659 1192 L643 1202 L611 1244 L600 1253 L597 1261 L607 1260 L617 1263 L631 1276 L634 1287 L647 1288 L670 1301 L677 1309 L695 1322 L703 1335 L726 1340 L726 1335 L733 1325 L732 1311 L737 1301 L746 1294 L758 1277 L768 1274 L778 1276 L781 1272 L787 1254 L797 1237 L797 1234 L795 1234 L792 1238 L788 1231 L792 1227 L796 1227 L795 1219 L799 1212 L787 1213 L777 1210 L773 1206 L769 1193 L749 1181 L744 1182 L739 1177 L731 1178 L728 1175 L729 1172 L719 1173Z"};
+  var NS='http://www.w3.org/2000/svg',ov=document.createElementNS(NS,'svg');
+  ov.setAttribute('viewBox','0 0 1600 1432');ov.setAttribute('class','ov');imap.insertBefore(ov,tip);
+  function selState(code){sel=code;render()}
+  S.forEach(function(s){
+    var code=s[0],els=[];
+    var pa=document.createElementNS(NS,'path');pa.setAttribute('d',PATHS[code]);pa.setAttribute('role','button');pa.setAttribute('tabindex','0');
+    pa.setAttribute('aria-label',s[1]+': '+lab(s));pa.setAttribute('aria-pressed','false');
+    var ti=document.createElementNS(NS,'title');ti.textContent=s[1]+' · '+lab(s);pa.appendChild(ti);
+    pa.addEventListener('click',function(){selState(code)});
+    pa.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selState(code)}});
+    ov.appendChild(pa);els.push(pa);
+    if(SMALL[code]){
+      var xy=XY[code],h=document.createElement('button');h.type='button';h.className='hot';
+      h.style.left=(xy[0]/1600*100)+'%';h.style.top=(xy[1]/1432*100)+'%';h.style.width='3.2%';
+      h.setAttribute('aria-label',s[1]+': '+lab(s));h.title=code+' · '+lab(s);h.onclick=function(){selState(code)};
+      imap.appendChild(h);els.push(h);
+    }
+    hots[code]=els;
+    var b=document.createElement('button');b.type='button';b.className='sg';b.textContent=code;b.setAttribute('aria-label',s[1]);
+    b.style.background=SW[s[2]];b.onclick=function(){selState(code)};sigs.appendChild(b);sbtn[code]=b;
+  });
+  L.forEach(function(l){
+    var c=document.createElement('button');c.type='button';c.className='chip';c.setAttribute('aria-pressed','false');
+    c.innerHTML='<i style="background:'+SW[l.k]+'"></i>'+l.t;
+    c.onclick=function(){flt=(flt===l.k?null:l.k);if(flt!==null)sel=null;render()};c.dataset.l=l.k;filt.appendChild(c);
+  });
+  function render(){
+    S.forEach(function(s){
+      hots[s[0]].forEach(function(h){
+        h.setAttribute('aria-pressed',s[0]===sel?'true':'false');
+        h.classList.toggle('hl',flt!==null&&s[2]===flt);
+      });
+      sbtn[s[0]].setAttribute('aria-pressed',s[0]===sel?'true':'false');
+      sbtn[s[0]].classList.toggle('dim',flt!==null&&s[2]!==flt);
+    });
+    Array.prototype.forEach.call(filt.children,function(c){c.setAttribute('aria-pressed',(flt!==null&&+c.dataset.l===flt)?'true':'false')});
+    var h='';
+    if(sel){
+      var s=S.filter(function(x){return x[0]===sel})[0],xy=XY[sel];
+      tip.hidden=false;tip.textContent=s[0]+' · '+lab(s);
+      tip.style.left=Math.min(82,Math.max(18,xy[0]/16))+'%';tip.style.top=(xy[1]/1432*100)+'%';
+      h='<div class="sig">'+s[0]+'</div><h3>'+s[1]+'</h3>';
+      if(s[3]){h+='<span class="tag">Valor informado</span><div class="val">'+fmt(s[3])+'</div><div class="rng">Faixa: '+L[s[2]].t+'</div>'}
+      else if(s[2]===0){h+='<span class="tag">Sem piso</span><div class="val" style="font-size:30px">Não definido</div><div class="rng">O infográfico não traz piso para este estado.</div>'}
+      else{h+='<span class="tag">Faixa</span><div class="val" style="font-size:34px">'+L[s[2]].t+'</div><div class="rng">O infográfico mostra só a faixa, não o valor exato.</div>'}
+      var same=S.filter(function(x){return x[2]===s[2]&&x[0]!==s[0]}).map(function(x){return x[0]});
+      if(same.length)h+='<div class="rng" style="margin-top:14px">Na mesma faixa: '+same.join(', ')+'</div>';
+    } else {
+      tip.hidden=true;
+      if(flt!==null){
+        var list=S.filter(function(x){return x[2]===flt}).map(function(x){return x[0]});
+        h='<div class="sig">'+list.length+'</div><h3>'+(list.length===1?'estado':'estados')+'</h3><div class="val" style="font-size:30px">'+L[flt].t+'</div><div class="rng" style="margin-top:12px">'+list.join(', ')+'</div>';
+      } else {
+        h='<div class="sig">27</div><h3>unidades da federação</h3><div class="rng">Do menor piso informado, <b>RN com '+fmt(1634.20)+'</b>, ao maior, <b>AL com '+fmt(5000.92)+'</b>. SP e PR estão na faixa de R$ 4.001 a 5.000. Três estados (RR, AP e RO) não têm piso definido.</div><div class="rng" style="margin-top:12px">Selecione um estado para ver os detalhes.</div>';
+      }
+    }
+    info.innerHTML=h;
+  }
+  render();
+  var zb=$('#zoombtn'),mw=$('#mapwrap');
+  zb.onclick=function(){var on=!mw.classList.contains('zoom');mw.classList.toggle('zoom',on);zb.setAttribute('aria-pressed',on?'true':'false');zb.textContent=on?'Reduzir o mapa':'Ampliar o mapa'};
+
+  /* ===== Quiz ===== */
+  var Q=[
+    {q:'Qual destes profissionais é formado em Jornalismo?',o:['Galvão Bueno','Glória Maria','Ana Maria Braga','Luciano Huck'],a:1,e:'Glória Maria é a resposta indicada no quiz.'},
+    {q:'Atualmente, é obrigatório ter diploma de Jornalismo para exercer a profissão no Brasil?',o:['Sim, para qualquer atividade jornalística','Sim, mas somente para trabalhar em televisão','Não, a exigência foi derrubada pelo STF em 2009','Não, porque a profissão nunca exigiu formação superior'],a:2,e:'O STF derrubou a exigência em 2009. Antes, ela valia desde 1969.'},
+    {q:'Por que a discussão sobre o diploma de Jornalismo continua em debate?',o:['Porque a profissão deixou de existir','Porque existe uma proposta para restabelecer a exigência de formação específica','Porque todos os jornalistas perderam seus diplomas','Porque o jornalismo passou a ser uma profissão exclusivamente digital'],a:1,e:'A PEC 206/2012 propõe restabelecer a exigência e aguarda votação na Câmara.'},
+    {q:'Qual é uma das principais funções de um sindicato de jornalistas?',o:['Produzir jornais para substituir os veículos de comunicação.','Definir quais jornalistas podem trabalhar em cada empresa.','Defender os direitos e interesses profissionais da categoria.','Fiscalizar exclusivamente a produção de notícias.'],a:2,e:'O sindicato negocia piso, reajuste e condições de trabalho na convenção coletiva.'},
+    {q:'Qual é a importância do jornalismo sindical para os trabalhadores?',o:['Dar visibilidade às demandas da categoria e informar sobre seus direitos e reivindicações.','Divulgar apenas notícias de interesse dos dirigentes sindicais.','Substituir a atuação dos sindicatos nas negociações trabalhistas.','Produzir exclusivamente conteúdos voltados para outros jornalistas.'],a:0,e:'Ele leva a pauta dos trabalhadores que a imprensa hegemônica costuma deixar de fora.'}
+  ];
+  var box=$('#quiz-box'),qi=0,res=[],answered=false;
+  function dots(){return '<div class="dots">'+Q.map(function(_,i){return '<i class="'+(res[i]===true?'ok':res[i]===false?'no':i===qi?'cur':'')+'"></i>'}).join('')+'</div>'}
+  function drawQ(){
+    answered=false;var d=Q[qi];
+    box.innerHTML='<div class="qhead"><span>Pergunta '+(qi+1)+' de '+Q.length+'</span>'+dots()+'</div><div class="qbody"><h3>'+d.q+'</h3><div class="opts" id="opts"></div><div id="fbk"></div><div class="qfoot" id="qfoot"></div></div>';
+    var oc=$('#opts');
+    d.o.forEach(function(t,i){
+      var b=document.createElement('button');b.type='button';b.className='opt';b.innerHTML='<b>'+'ABCD'[i]+'</b><span></span>';b.lastChild.textContent=t;
+      b.onclick=function(){pick(i)};oc.appendChild(b);
+    });
+  }
+  function pick(i){
+    if(answered)return;answered=true;var d=Q[qi],ok=i===d.a;res[qi]=ok;
+    Array.prototype.forEach.call($('#opts').children,function(b,j){b.disabled=true;if(j===d.a)b.classList.add('right');else if(j===i)b.classList.add('wrong')});
+    $('#fbk').innerHTML='<div class="fb"><b>'+(ok?'Certo.':'Não foi dessa vez.')+'</b> '+d.e+'</div>';
+    var f=$('#qfoot'),n=document.createElement('button');n.type='button';n.className='btn';n.textContent=qi<Q.length-1?'Próxima pergunta':'Ver resultado';
+    n.onclick=function(){if(qi<Q.length-1){qi++;drawQ()}else drawEnd()};f.appendChild(n);n.focus();
+    $('.qhead .dots').outerHTML=dots();
+  }
+  function drawEnd(){
+    var s=res.filter(Boolean).length;
+    var m=s===5?'Você acertou tudo.':s>=3?'Bom resultado.':'Releia a reportagem e tente de novo.';
+    box.innerHTML='<div class="qhead"><span>Resultado</span>'+dots()+'</div><div class="qbody"><div class="score">'+s+'/'+Q.length+'</div><h3 style="margin-top:8px">'+m+'</h3><div class="qfoot"><button class="btn" id="again" type="button">Refazer o quiz</button></div></div>';
+    $('#again').onclick=function(){qi=0;res=[];drawQ()};
+  }
+  drawQ();
+
+
+  /* ===== Enquete ===== */
+  (function(){
+    var o=['Não acho necessário','Acredito que é importante','Não tenho uma opinião formada'],box=$('#poll-opts'),out=$('#poll-out');
+    o.forEach(function(txt,i){
+      var b=document.createElement('button');b.type='button';b.className='opt';b.setAttribute('role','radio');b.setAttribute('aria-checked','false');
+      b.innerHTML='<b>'+'ABC'[i]+'</b><span></span>';b.lastChild.textContent=txt;
+      b.onclick=function(){
+        Array.prototype.forEach.call(box.children,function(x){x.setAttribute('aria-checked',x===b?'true':'false')});
+        out.innerHTML='<div class="fb" style="background:var(--paper);color:var(--ink)"><b>Escolha marcada.</b> Ela fica só nesta página e não é enviada. Para registrar a sua opinião na pesquisa, responda no formulário.</div><div class="qfoot"><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc6i2gaqwmV-vmrLlUwMINPYNscs3tQtID2k20McSDhAFn4Dg/viewform" target="_blank" rel="noopener">Responder a enquete</a></div>';
+      };
+      box.appendChild(b);
+    });
+    out.innerHTML='<div class="qfoot"><a class="btn alt" style="background:var(--paper)" href="https://docs.google.com/forms/d/e/1FAIpQLSc6i2gaqwmV-vmrLlUwMINPYNscs3tQtID2k20McSDhAFn4Dg/viewform" target="_blank" rel="noopener">Abrir o formulário</a></div>';
+  })();
+  /* ===== Contadores e barras ao aparecer (estado final já visível sem JS) ===== */
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fillBars(){Array.prototype.forEach.call(document.querySelectorAll('.fill[data-w]'),function(f){f.style.width=f.dataset.w+'%'})}
+  fillBars();
+
+
+  /* ===== Drive: no site hospedado, o player do Drive abre na própria página ===== */
+  Array.prototype.forEach.call(document.querySelectorAll('.dv'),function(a){
+    a.addEventListener('click',function(e){
+      if(!window.__EMBED)return;
+      e.preventDefault();
+      var f=document.createElement('iframe');
+      f.src='https://drive.google.com/file/d/'+a.dataset.id+'/preview';
+      f.allow='autoplay; fullscreen';f.allowFullscreen=true;f.title=a.getAttribute('aria-label');
+      a.parentNode.replaceChild(f,a);
+    });
+  });
+  /* ===== Progresso e navegação ===== */
+  var pbar=$('#pbar'),links=Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-innerHeight;pbar.style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%';
+    var cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.4)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+
+</body></html>
